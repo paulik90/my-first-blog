@@ -9,5 +9,15 @@
 		<div><a href=""><strong>Kliknij!</strong></a></div>
 		<p>Hej!</p>
 		<p>Działa!</p>
+		{%for post in posts%}
+		<div>
+		<p>published:{{ post.published_date }}</p>
+		<h1><a href="">{{ post.title }}</a></h1>
+		<p>{{ post.text|linebreaksbr }}</p></div>
+		<div>	{{post.title}}</div>
+		<div>	{{post.text}}</div>
+		<div>	{{post.pubished_date}}</div>
+
+		{%endfor%}
 	</body>
 </html>

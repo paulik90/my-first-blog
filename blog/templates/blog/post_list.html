@@ -1,25 +1,13 @@
-<html>
-	<head>
-		<title>Paulik blog</title>
-	</head>
-	<body>
-		<div>
-			<h1><em>CZEŚĆ</em></h1></div>
-		<div><h2> dzisiaj jest 10.12 sobota</h2></div>
-		<div><a href=""><strong>Kliknij!</strong></a></div>
-		<p>Hej!</p>
-		<p>Działa!</p>
-		{%for post in posts%}
-		<div>
-		<p>published: {{ post.published_date }}</p>
-		<h1><a href="">{{ post.title }}</a></h1>
-		<p>{{ post.text|linebreaksbr }}</p>
-		</div>
-		
-		<div>	{{post.title}}</div>
-		<div>	{{post.text}}</div>
-		<div>	{{post.pubished_date}}</div>
+{% extends 'blog/base.html' %}
 
-		{%endfor%}
-	</body>
-</html>
+{% block content %}
+	{% for post in posts %}
+    	<div class="post">
+       	   <div class="date">
+            {{ post.published_date }}
+       	   </div>
+       	   <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+           <p>{{ post.text|linebreaksbr }}</p>
+    	</div>
+    {% endfor %}
+{% endblock content %}
